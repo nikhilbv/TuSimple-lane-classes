@@ -1,3 +1,7 @@
+# Customization
+To visualize the original dataset i.e. without classes. Launch with:
+```python tusimple_visualizer.py --root /path/to/dataset --labels labels_json_file.json```
+
 # TuSimple Lane Challenge Class Labels
 
 This repository contains the class labels for the lane boundaries of the TuSimple lane detection dataset. You can download the dataset from https://github.com/TuSimple/tusimple-benchmark/issues/3.
