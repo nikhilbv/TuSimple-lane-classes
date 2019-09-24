@@ -36,6 +36,8 @@ def process(root_dir, json_file):
     with open(root_dir + json_file, 'r') as file:
         json_lines = file.readlines()
         # class_lines = classes.readlines()
+        print("json_lines : {}".format(json_lines))
+        print("len_json_lines : {}".format(len(json_lines)))
         line_index = 0
 
         # Iterate over each image
@@ -48,11 +50,11 @@ def process(root_dir, json_file):
             # class_list = class_line.split(' ')
             lanes = sample['lanes']
             raw_file = root_dir + sample['raw_file']
+            print("len_of_h : {}".format(len(sample['h_samples'])))
 
-            # Display image and draw lane
+            # # Display image and draw lane
             while i < len(lanes):
                 im = cv2.imread(raw_file)
-                polyline = []
                 for v in range(0, len(sample['h_samples']) - 1):
 
                     point_h_begin = sample['h_samples'][v]
@@ -61,17 +63,16 @@ def process(root_dir, json_file):
                     point_w_end = lanes[i][v + 1]
 
                     if(point_w_begin != -2 and point_w_end != -2):
-                        # cv2.circle(im, (point_w_begin, point_h_begin), 3, getcolor(1))
                         cv2.circle(im, (point_w_begin, point_h_begin), 3, getcolor(1))
 
-                # cv2.putText(im,'continuous yellow',(0,40), cv2.FONT_HERSHEY_SIMPLEX, 1,getcolor(1),2,cv2.LINE_AA)
-                # cv2.putText(im,'continuous',(0,70), cv2.FONT_HERSHEY_SIMPLEX, 1,getcolor(2),2,cv2.LINE_AA)
-                # cv2.putText(im,'dashed',(0,100), cv2.FONT_HERSHEY_SIMPLEX, 1,getcolor(3),2,cv2.LINE_AA)
-                # cv2.putText(im,'double-dashed',(0,130), cv2.FONT_HERSHEY_SIMPLEX, 1,getcolor(4),2,cv2.LINE_AA)
-                # cv2.putText(im,'Botts\' dots',(0,170), cv2.FONT_HERSHEY_SIMPLEX, 1,getcolor(5),2,cv2.LINE_AA)
-                # cv2.putText(im,'double continuous',(0,200), cv2.FONT_HERSHEY_SIMPLEX, 1,getcolor(6),2,cv2.LINE_AA)
-                # cv2.putText(im,'unknown',(0,230), cv2.FONT_HERSHEY_SIMPLEX, 1,getcolor(7),2,cv2.LINE_AA)
-                # cv2.putText(im,'Count: ' + str(count),(400,40), cv2.FONT_HERSHEY_SIMPLEX, 1,getcolor(7),2,cv2.LINE_AA)
+            #     # cv2.putText(im,'continuous yellow',(0,40), cv2.FONT_HERSHEY_SIMPLEX, 1,getcolor(1),2,cv2.LINE_AA)
+            #     # cv2.putText(im,'continuous',(0,70), cv2.FONT_HERSHEY_SIMPLEX, 1,getcolor(2),2,cv2.LINE_AA)
+            #     # cv2.putText(im,'dashed',(0,100), cv2.FONT_HERSHEY_SIMPLEX, 1,getcolor(3),2,cv2.LINE_AA)
+            #     # cv2.putText(im,'double-dashed',(0,130), cv2.FONT_HERSHEY_SIMPLEX, 1,getcolor(4),2,cv2.LINE_AA)
+            #     # cv2.putText(im,'Botts\' dots',(0,170), cv2.FONT_HERSHEY_SIMPLEX, 1,getcolor(5),2,cv2.LINE_AA)
+            #     # cv2.putText(im,'double continuous',(0,200), cv2.FONT_HERSHEY_SIMPLEX, 1,getcolor(6),2,cv2.LINE_AA)
+            #     # cv2.putText(im,'unknown',(0,230), cv2.FONT_HERSHEY_SIMPLEX, 1,getcolor(7),2,cv2.LINE_AA)
+            #     # cv2.putText(im,'Count: ' + str(count),(400,40), cv2.FONT_HERSHEY_SIMPLEX, 1,getcolor(7),2,cv2.LINE_AA)
                 
                 cv2.imshow('image', im)
 
