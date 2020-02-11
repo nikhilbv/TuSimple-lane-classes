@@ -1,7 +1,11 @@
 # Customization
 To visualize the original dataset i.e. without classes. Launch with:
 
-```python tusimple_visualizer.py --root /path/to/dataset --labels labels_json_file.json```
+```python tusimple_visualizer.py --json_file /path/to/json_file.json```
+
+To save the images with predictions 
+
+```python tusimple_image_saver.py --json_file /path/to/json_file.json```
 
 # TuSimple Lane Challenge Class Labels
 
